@@ -4,6 +4,7 @@ import java.net.URI;
 import java.util.List;
 
 import javax.servlet.http.HttpServletResponse;
+import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -37,7 +38,7 @@ public class CategoriaResource {
 	}
 	
 	@PostMapping
-	public ResponseEntity<Categoria> criar(@RequestBody Categoria categoria, HttpServletResponse response) { //@RequestBody pega o Json e tranforma em objeto Categoria
+	public ResponseEntity<Categoria> criar(@Valid @RequestBody Categoria categoria, HttpServletResponse response) { //@RequestBody pega o Json e tranforma em objeto Categoria
 		Categoria categoriaSalva = categoriaRepository.save(categoria);		
 		
 		//este trecho pega o código da categoria já salva no banco e monta a URI para setar no Location
